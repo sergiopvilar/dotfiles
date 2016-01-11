@@ -15,8 +15,8 @@
       "vendor"
     ]
     themes: [
-      "unity-ui"
-      "glacier-syntax"
+      "one-dark-ui"
+      "atom-material-syntax"
     ]
     hideGitIgnoredFiles: true
     disabledPackages: [
@@ -37,3 +37,4 @@
     viewedVersion: "0.89.0"
   "go-plus":
     goPath: "/Users/holman/Code/go"
+  emmet: {}
