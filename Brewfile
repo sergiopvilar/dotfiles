@@ -24,7 +24,6 @@ brew 'spark'
 brew 'unrar'
 brew 'youtube-dl'
 
-cask 'alfred'
 cask 'appcleaner'
 cask 'atom'
 cask 'copy'
