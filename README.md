@@ -52,6 +52,7 @@ Run this:
 ```sh
 git clone https://github.com/jpaulobneto/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+bin/dot
 script/bootstrap
 ```
 
