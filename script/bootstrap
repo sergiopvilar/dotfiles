@@ -1,3 +1,9 @@
+# Enabling zsh
+if test $(which zsh)
+then
+  chsh -s $(which zsh)
+fi
+
 #!/usr/bin/env bash
 #
 # bootstrap installs things.
