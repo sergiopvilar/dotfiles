@@ -36,5 +36,7 @@
       "source.gfm"
       "text.git-commit"
     ]
+  wakatime:
+    apikey: "735dfa6f-c1dc-457d-827d-85c8782822a0"
   welcome:
     showOnStartup: false

@@ -1,3 +1,5 @@
 alias deval='eval "$(docker-machine env default)"'
-alias dockerc='docker-compose'
-alias dockerm='docker-machine'
+alias docc='docker-compose'
+alias docm='docker-machine'
+alias docmd='docker-machine stop default'
+alias docmu='docker-machine start default'
