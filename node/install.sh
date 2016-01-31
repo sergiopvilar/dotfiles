@@ -20,3 +20,13 @@ if test ! $(which yo)
 then
   npm install yo -g
 fi
+
+if test ! $(which node-gyp)
+then
+  npm install node-gyp -g
+fi
+
+if test ! $(which npm-check-updates)
+then
+  npm install npm-check-updates -g
+fi
