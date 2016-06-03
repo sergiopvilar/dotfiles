@@ -48,3 +48,9 @@ ZSH_THEME="candy"
 # BULLETTRAIN_TIME_FG='white'
 # BULLETTRAIN_RUBY_SHOW=false
 source $ZSH/oh-my-zsh.sh
+
+export NVM_DIR="/home/joao/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"

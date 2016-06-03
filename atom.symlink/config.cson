@@ -1,0 +1,18 @@
+"*":
+  "atom-material-ui":
+    tabs:
+      compactTabs: true
+      tintedTabBar: true
+    treeView:
+      compactList: true
+    ui:
+      panelContrast: true
+  core:
+    themes: [
+      "atom-material-ui"
+      "atom-material-syntax"
+    ]
+  "exception-reporting":
+    userId: "151d1a2a-bfdb-594c-5b70-02b1a7369df1"
+  welcome:
+    showOnStartup: false
