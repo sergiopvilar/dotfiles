@@ -1,0 +1,49 @@
+{
+    // Controls whether the prompt will show
+"sublimeTextKeymap.promptV3Features": true,
+
+// Changes the multi cursor mouse binding
+"editor.multiCursorModifier": "ctrlCmd",
+
+// Specifies the location of snippets in the suggestion widget
+"editor.snippetSuggestions": "top",
+
+// Controls whether format on paste is on or off
+"editor.formatOnPaste": true,
+"window.zoomLevel": 0,
+"workbench.colorTheme": "Ayu Mirage Bordered",
+"editor.fontFamily": "iosevka",
+"editor.fontSize": 18,
+"files.autoSave": "afterDelay",
+"files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/.bundle": true,
+    "**/node_modules": true,
+    "**/assets.hash": true,
+    "**/tmp": true,
+    "**/dump.rdb": true,
+    "**/.byebug_history": true,
+    "**/log": true,
+},
+"workbench.activityBar.visible": false,
+"diffEditor.ignoreTrimWhitespace": false,
+"files.trimTrailingWhitespace": true,
+"editor.insertSpaces": true,
+"editor.tabSize": 2,
+"material-icon-theme.folders.theme": "classic",
+"workbench.iconTheme": "vs-nomo-dark",
+"material-icon-theme.folders.color": "#666666",
+"window.titleBarStyle": "hiddenInset",
+"editor.lineHeight": 28,
+"editor.rulers": [
+    120
+],
+"files.insertFinalNewline": true,
+"editor.showFoldingControls": "always",
+"explorer.confirmDragAndDrop": false,
+"javascript.updateImportsOnFileMove.enabled": "always"
+}
