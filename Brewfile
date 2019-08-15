@@ -48,6 +48,8 @@ mas 'Tweetbot', id: 1384080005
 mas 'Whatsapp', id: 1147396723
 mas 'Xcode', id: 497799835
 mas 'Todoist', id: 585829637
+mas 'Transmit', id: 403388562
+mas 'Enpass', id: 732710998
 
 cask 'appcleaner'
 cask 'dropbox'
@@ -55,18 +57,14 @@ cask 'firefox'
 cask 'google-chrome'
 cask 'java'
 cask 'spotify'
-cask 'sequel-pro'
-cask 'visual-studio-code'
 cask 'vlc'
 cask 'alfred'
 cask 'caffeine'
 cask 'dash'
 cask 'tower2'
-cask 'enpass'
 cask 'spotify'
 cask 'fantastical'
 cask 'notion'
-cask 'psequel'
 cask 'discord'
 cask 'xquartz'
 cask 'apptivate'
@@ -76,10 +74,18 @@ cask 'evernote'
 cask 'keybase'
 cask 'numi'
 cask 'onedrive'
+cask 'divvy'
+cask 'daisydisk'
+
+# Development
+cask 'google-chrome-canary'
+cask 'iterm2'
 cask 'paw'
 cask 'transmit'
-cask 'divvy'
-cask 'iterm2'
-cask 'google-chrome-canary'
+cask 'psequel'
+cask 'sequel-pro'
+cask 'visual-studio-code'
+
+# Fonts
 cask 'caskroom/fonts/font-hack'
 cask 'caskroom/fonts/font-iosevka'
