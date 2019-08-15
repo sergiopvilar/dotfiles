@@ -2,7 +2,7 @@
 export ZSHDOT=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/Code
+export PROJECTS=~/repos
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
@@ -46,14 +46,6 @@ ZSH_THEME="refined"
 
 source $ZSH/oh-my-zsh.sh
 
-# RVM
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="$PATH:$HOME/Qt5.5.1/5.5/clang_64/bin"
-export PATH="$PATH:$HOME/adb-fastboot"
-
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# Add Visual Studio Code (code)
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
