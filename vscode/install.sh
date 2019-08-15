@@ -1,3 +1,4 @@
+rm /Users/sergio/Library/Application\ Support/Code/User/settings.json
 ln -s /Users/sergio/.dotfiles/vscode/settings.json /Users/sergio/Library/Application\ Support/Code/User/settings.json
 
 code --install-extension 74th.monokai-charcoal-high-contrast

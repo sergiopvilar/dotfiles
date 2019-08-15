@@ -2,8 +2,9 @@ cask_args appdir: '/Applications'
 
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
-tap 'homebrew/php'
+tap 'homebrew/cask-versions'
 
+brew 'php72'
 brew 'ack'
 brew 'composer'
 brew 'coreutils'
@@ -11,7 +12,6 @@ brew 'git-flow'
 brew 'grc'
 brew 'imagemagick'
 brew 'jp2a'
-brew 'libcaca', args: ['with-imlib2']
 brew 'libgit2'
 brew 'openssl'
 brew 'node'
@@ -33,22 +33,21 @@ brew 'mysql'
 brew 'nginx'
 brew 'nvm'
 brew 'postgresql'
-brew 'yarn'11
+brew 'yarn'
 brew 'bat'
 brew 'jed'
 brew 'mas'
 brew 'gnupg'
 
-mas 'DaisyDisk', id: 411643860
 mas 'Pixelmator', id: 407963104
 mas 'Pocket', id: 568494494
-mas 'Reeder', id: 880001334
 mas 'Slack', id: 803453959
 mas 'Spark', id: 1176895641
 mas 'Telegram', id: 747648890
 mas 'Tweetbot', id: 1384080005
 mas 'Whatsapp', id: 1147396723
 mas 'Xcode', id: 497799835
+mas 'Todoist', id: 585829637
 
 cask 'appcleaner'
 cask 'dropbox'
@@ -58,17 +57,15 @@ cask 'java'
 cask 'spotify'
 cask 'sequel-pro'
 cask 'visual-studio-code'
-cask 'utorrent'
 cask 'vlc'
 cask 'alfred'
 cask 'caffeine'
 cask 'dash'
-cask 'tower'
+cask 'tower2'
 cask 'enpass'
 cask 'spotify'
 cask 'fantastical'
 cask 'notion'
-cask 'todoist'
 cask 'psequel'
 cask 'discord'
 cask 'xquartz'
@@ -81,5 +78,8 @@ cask 'numi'
 cask 'onedrive'
 cask 'paw'
 cask 'transmit'
+cask 'divvy'
+cask 'iterm2'
+cask 'google-chrome-canary'
 cask 'caskroom/fonts/font-hack'
 cask 'caskroom/fonts/font-iosevka'
