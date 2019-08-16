@@ -50,6 +50,7 @@ mas 'Xcode', id: 497799835
 mas 'Todoist', id: 585829637
 mas 'Transmit', id: 403388562
 mas 'Enpass', id: 732710998
+mas 'iA Writer', id: 775737590
 
 cask 'appcleaner'
 cask 'dropbox'
