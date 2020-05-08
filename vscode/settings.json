@@ -11,7 +11,7 @@
 // Controls whether format on paste is on or off
 "editor.formatOnPaste": true,
 "window.zoomLevel": 0,
-"workbench.colorTheme": "Ayu Mirage Bordered",
+"workbench.colorTheme": "Dracula",
 "editor.fontFamily": "iosevka",
 "editor.fontSize": 18,
 "files.autoSave": "afterDelay",
@@ -34,8 +34,8 @@
 "files.trimTrailingWhitespace": true,
 "editor.insertSpaces": true,
 "editor.tabSize": 2,
-"material-icon-theme.folders.theme": "classic",
-"workbench.iconTheme": "vs-nomo-dark",
+"material-icon-theme.folders.theme": "specific",
+"workbench.iconTheme": "seti",
 "material-icon-theme.folders.color": "#666666",
 "window.titleBarStyle": "hiddenInset",
 "editor.lineHeight": 28,
@@ -45,5 +45,8 @@
 "files.insertFinalNewline": true,
 "editor.showFoldingControls": "always",
 "explorer.confirmDragAndDrop": false,
-"javascript.updateImportsOnFileMove.enabled": "always"
+"javascript.updateImportsOnFileMove.enabled": "always",
+"material-icon-theme.saturation": 0,
+"vsicons.dontShowNewVersionMessage": true,
+"git.ignoreMissingGitWarning": true
 }
