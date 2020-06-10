@@ -1,6 +1,6 @@
 alias tower='gittower ./'
 
-# Project utils
+# Project aliases
 alias cd_dev="cd $DEVPROJECT"
 alias run="cd_dev && $DEVPROJECT/script/develop"
 alias sa_setup="cd_dev && SSHUSER=$DEVUSER $DEVPROJECT/script/setup --sample --customer=sit"
@@ -9,26 +9,12 @@ alias reset_vpn="ssh $DEVREMOTE -p 80"
 alias rpush="cd_dev && review push"
 alias rcleanup="cd $DEVPROJECT;branch_cleanup && review cleanup"
 
-# Php utils
-alias php_server='php -S localhost:3000'
-
-# Postgres Utils
-alias postgres_kill="ps aux | grep postgres | grep idle | awk '{print $2}' | xargs kill"
-postgres_clean() {
-  sudo rm /usr/local/Evar/postgres/postmaster.pid
-  sudo rm /usr/local/var/postgres/postmaster.pid
-}
-
-# Docker Utils
-docker_run() {
-  cd_dev
-  $DEVPROJECT/devtools/setup
-  PINPAD_SIMULATION_ENABLED=0 docker-compose -f $DEVPROJECT/devtools/rje-env/docker-compose.yml up rabbitmq sit0001red0
-}
-
-docker_cleanup() {
-  docker stop $(docker ps -a -q)
-  docker rm $(docker ps -a -q)
+# Project functions
+branch() {
+  name=$1
+  target=$2
+  git fetch
+  git checkout -b $name --no-track "origin/$target"
 }
 
 branch_cleanup() {
@@ -41,6 +27,28 @@ branch_cleanup() {
   done
 }
 
+# Tool aliases
+alias php_server='php -S localhost:3000'
+alias postgres_kill="ps aux | grep postgres | grep idle | awk '{print $2}' | xargs kill"
+
+# Tool Functions
+postgres_clean() {
+  sudo rm /usr/local/Evar/postgres/postmaster.pid
+  sudo rm /usr/local/var/postgres/postmaster.pid
+}
+
+docker_run() {
+  cd_dev
+  $DEVPROJECT/devtools/setup
+  PINPAD_SIMULATION_ENABLED=0 docker-compose -f $DEVPROJECT/devtools/rje-env/docker-compose.yml up rabbitmq sit0001red0
+}
+
+docker_cleanup() {
+  docker stop $(docker ps -a -q)
+  docker rm $(docker ps -a -q)
+}
+
+# Dotfiles help
 alias_help() {
   echo "PROJECT ALIASES\n---------------"
   echo "cd_dev:           cds into $DEVPROJECT"
@@ -50,6 +58,7 @@ alias_help() {
   echo "reset_vpn:        resets VPN password"
   echo "rpush:            runs reviewit push at $DEVPROJECT"
   echo "rcleanup:         remove released branches merged MRs at $DEVPROJECT"
+  echo "branch:           <branch name> <version> creates a branch from a version"
 
   echo "\nTOOL ALIASES\n-----------"
   echo "php_server:       runs a Php server at current directory"
