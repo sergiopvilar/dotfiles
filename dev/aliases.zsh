@@ -30,6 +30,8 @@ branch_cleanup() {
 # Tool aliases
 alias php_server='php -S localhost:3000'
 alias postgres_kill="ps aux | grep postgres | grep idle | awk '{print $2}' | xargs kill"
+alias rails_run="bundle exec rails server"
+alias cde="code ./"
 
 # Tool Functions
 postgres_clean() {
@@ -41,6 +43,15 @@ docker_run() {
   cd_dev
   $DEVPROJECT/devtools/setup
   PINPAD_SIMULATION_ENABLED=0 docker-compose -f $DEVPROJECT/devtools/rje-env/docker-compose.yml up rabbitmq sit0001red0
+}
+
+alias docker_cleanup_rel="docker images | grep reliant.io | awk '{print $3}' | xargs docker rmi"
+alias docker_cleanup_none="docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi"
+alias docker_cleanup_images="docker images | awk '{print $3}' | xargs docker rmi"
+
+docker_purge() {
+  docker_cleanup
+  docker_cleanup_images
 }
 
 docker_cleanup() {
