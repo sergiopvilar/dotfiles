@@ -38,6 +38,10 @@ brew 'bat'
 brew 'jed'
 brew 'mas'
 brew 'gnupg'
+brew 'pandoc'
+brew 'pandoc-citeproc'
+brew 'librsvg'
+brew 'python'
 
 mas 'Pixelmator', id: 407963104
 mas 'Pocket', id: 568494494
@@ -91,3 +95,6 @@ cask 'visual-studio-code'
 # Fonts
 cask 'caskroom/fonts/font-hack'
 cask 'caskroom/fonts/font-iosevka'
+
+# Studies
+cask 'basictex'
