@@ -82,3 +82,8 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
 )
+
+fpath+=($ZSH/plugins/docker)
+autoload -U compinit && compinit
+
+source "$HOME/.dotfiles/study/path.zsh"

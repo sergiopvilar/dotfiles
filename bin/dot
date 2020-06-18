@@ -12,9 +12,12 @@ $ZSHDOT/osx/set-defaults.sh
 # Install homebrew
 $ZSHDOT/homebrew/install.sh 2>&1
 
-# Upgrade homebrew
-echo "› brew update"
-brew update
+if test "$(uname)" = "Darwin"
+  then
+  # Upgrade homebrew
+  echo "› brew update"
+  brew update
+fi
 
 # Install software
 echo "› $ZSHDOT/script/install"
