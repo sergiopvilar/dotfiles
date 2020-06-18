@@ -1,5 +1,10 @@
 if test "$(uname)" = "Linux"
-  then
-  alias code="/mnt/c/Users/sergi/AppData/Local/Programs/Microsoft\ VS\ Code/bin/code"
-  alias docker="/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker"
+then
+  GOPATH=$HOME/go
+  function _update_ps1() {
+      PS1="$($GOPATH/bin/powerline-go -error $?)"
+  }
+  if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
+      PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+  fi
 fi
