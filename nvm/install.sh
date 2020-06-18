@@ -1,6 +1,12 @@
-if [ -d "$NVM_DIR" ]; then
-  echo "nvm already installed"
-else
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-  nvm install node
+#!/bin/sh
+
+if test ! $(which fnm)
+then
+  wget -O ./fnm-install.sh https://github.com/Schniz/fnm/raw/master/.ci/install.sh
+  chmod +x ./fnm-install.sh
+  ./fnm-install.sh --force-install
+  rm ./fnm-install.sh
+  source "$HOME/.dotfiles/nvm/path.zsh"
+  fnm install latest
+  fnm default latest
 fi

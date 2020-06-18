@@ -25,7 +25,7 @@ done
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
- source $file
+  source $file
 done
 
 # initialize autocomplete here, otherwise functions won't be loaded
