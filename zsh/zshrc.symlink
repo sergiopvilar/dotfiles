@@ -19,30 +19,35 @@ config_files=($ZSHDOT/**/*.zsh)
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
 do
-  source $file
+source $file
 done
 
-# load everything but the path and completion files
+# # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
 do
-  source $file
+ source $file
 done
 
-# initialize autocomplete here, otherwise functions won't be loaded
+# # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
 
-# load every completion after autocomplete loads
+# # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
 do
-  source $file
+ source $file
 done
 
-unset config_files
+# unset config_files
 
-# oh-my-zsh configuration
+# # oh-my-zsh configuration
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="spaceship"
+
+export PATH="/bin:/usr/bin:./bin:/usr/local/bin:/usr/local/sbin:$ZSHDOT/bin:$PATH"
+export PATH="/mnt/c/Users/sergi/AppData/Local/Programs/Microsoft\ VS\ Code/bin:$PATH"
+source "$HOME/.dotfiles/study/path.zsh"
+source "$HOME/.dotfiles/dev/path.zsh"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -65,7 +70,7 @@ SPACESHIP_PROMPT_ORDER=(
   #rust          # Rust section
   #haskell       # Haskell Stack section
   #julia         # Julia section
-  docker        # Docker section
+  # docker        # Docker section
   #aws           # Amazon Web Services section
   #venv          # virtualenv section
   #conda         # conda virtualenv section
@@ -83,7 +88,5 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
-fpath+=($ZSH/plugins/docker)
-autoload -U compinit && compinit
-
-source "$HOME/.dotfiles/study/path.zsh"
+# #fpath+=($ZSH/plugins/docker)
+# #autoload -U compinit && compinit
