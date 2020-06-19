@@ -17,6 +17,18 @@ branch() {
   git checkout -b $name --no-track "origin/$target"
 }
 
+rebase() {
+  branch_name="$(git symbolic-ref HEAD 2>/dev/null)" ||
+  branch_name="(unnamed branch)"
+  branch_name=${branch_name##refs/heads/}
+
+  git fetch
+  git checkout $1
+  git pull origin $1
+  git checkout $branch_name
+  git rebase $1
+}
+
 branch_cleanup() {
   branches=()
   eval "$(git for-each-ref --shell --format='branches+=(%(refname:short))' refs/heads/)"
