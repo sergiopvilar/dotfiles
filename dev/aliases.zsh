@@ -62,8 +62,13 @@ alias docker_cleanup_none="docker images | grep '<none>' | awk '{print $3}' | xa
 alias docker_cleanup_images="docker images | awk '{print $3}' | xargs docker rmi"
 
 docker_purge() {
+  echo "Stopping and removing containers..."
   docker_cleanup
+  echo "Removing all images..."
   docker_cleanup_images
+  echo "Pruning remaining objects..."
+  docker system prune --all -f
+  echo "Done."
 }
 
 docker_cleanup() {
