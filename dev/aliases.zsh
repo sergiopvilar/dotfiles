@@ -44,6 +44,8 @@ alias php_server='php -S localhost:3000'
 alias postgres_kill="ps aux | grep postgres | grep idle | awk '{print $2}' | xargs kill"
 alias rails_run="bundle exec rails server"
 alias cde="code ./"
+alias glog="git lg"
+alias gllog="git lg -p"
 
 # Tool Functions
 postgres_clean() {
