@@ -8,13 +8,15 @@ alias su_setup="cd_dev && SSHUSER=$DEVUSER $DEVPROJECT/script/setup -r --ssh-use
 alias reset_vpn="ssh $DEVREMOTE -p 80"
 alias rpush="cd_dev && review push"
 alias rcleanup="cd $DEVPROJECT;branch_cleanup && review cleanup"
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+alias code='subl'
 
 # Project functions
 branch() {
   name=$1
   target=$2
-  git fetch
-  git checkout -b $name --no-track "origin/$target"
+  git fetch --all
+  git checkout -b $name --no-track "rel/$target"
 }
 
 rebase() {
@@ -22,9 +24,9 @@ rebase() {
   branch_name="(unnamed branch)"
   branch_name=${branch_name##refs/heads/}
 
-  git fetch
+  git fetch --all
   git checkout $1
-  git pull origin $1
+  git pull rel $1
   git checkout $branch_name
   git rebase $1
 }

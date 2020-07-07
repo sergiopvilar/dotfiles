@@ -11,7 +11,7 @@
 // Controls whether format on paste is on or off
 "editor.formatOnPaste": true,
 "window.zoomLevel": 0,
-"workbench.colorTheme": "Dracula",
+"workbench.colorTheme": "AgolaDark",
 "editor.fontFamily": "iosevka",
 "editor.fontSize": 18,
 "files.autoSave": "afterDelay",
@@ -48,5 +48,6 @@
 "javascript.updateImportsOnFileMove.enabled": "always",
 "material-icon-theme.saturation": 0,
 "vsicons.dontShowNewVersionMessage": true,
-"git.ignoreMissingGitWarning": true
+"git.ignoreMissingGitWarning": true,
+"editor.fontLigatures": true
 }
