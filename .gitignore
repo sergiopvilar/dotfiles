@@ -10,3 +10,4 @@ atom.symlink/themes
 git/gitconfig.symlink
 spaceship-prompt
 *.zsh-theme
+repos/kbos

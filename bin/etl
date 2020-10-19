@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'fileutils'
+
+customer = ARGV[0]
+file = ARGV[1]
+devproject = ENV["DEVPROJECT"]
+config_file = "#{devproject}/config/rpm.yml"
+
+config = YAML.load_file(config_file)
+customer_dir = "#{config["efs_storage_dir"]}/etl/#{customer}"
+
+unless File.directory?(customer_dir)
+  Dir.mkdir customer_dir
+end
+
+FileUtils.cp(file, customer_dir)

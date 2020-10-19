@@ -9,4 +9,9 @@ then
   source "$HOME/.dotfiles/nvm/path.zsh"
   fnm install latest
   fnm default latest
+
+  if test "$(uname)" = "Linux"
+  then
+    curl -o- -L https://yarnpkg.com/install.sh | bash
+  fi
 fi

@@ -8,5 +8,12 @@
 if [ "$(uname)" == "Darwin" ]; then
   echo "› sudo softwareupdate -i -a"
   sudo softwareupdate -i -a
+
+  echo "Installing KBOS"
+  rm -rf -f $ZSHDOT/repos/kbos
+  git clone git@github.com:alb12-la/KBOS.git $ZSHDOT/repos/kbos
+  chmod +x $ZSHDOT/repos/kbos/setup.sh
+  cd $ZSHDOT/repos/kbos && ./setup.sh
+  cd $ZSHDOT
 fi
 
