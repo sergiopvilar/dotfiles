@@ -1,22 +1,57 @@
 alias tower='gittower ./'
 
 # Project aliases
-alias cd_dev="cd $DEVPROJECT"
-alias run="cd_dev && $DEVPROJECT/script/develop"
-alias sa_setup="cd_dev && SSHUSER=$DEVUSER $DEVPROJECT/script/setup --sample --customer=sit"
-alias su_setup="cd_dev && SSHUSER=$DEVUSER $DEVPROJECT/script/setup -r --ssh-user=$DEVUSER; bundle exec rails runner $HOME/.dotfiles/dev/su.rb"
+alias cd_dev="cd /Users/sergio/rel/rpm"
+alias run="cd_dev; script/develop"
+alias sa_setup="project_setup sample"
+alias su_setup="project_setup"
 alias reset_vpn="ssh $DEVREMOTE -p 80"
-alias rpush="cd_dev && review push"
 alias rcleanup="cd $DEVPROJECT;branch_cleanup && review cleanup"
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-alias code='subl'
+alias code='$EDITOR'
+alias rspec='bundle exec rspec'
+alias rails='bundle exec rails'
+alias rake='bundle exec rake'
+alias docker_es='docker-compose up elasticsearch kibana'
+alias es_index='rake rpm:elasticsearch_indexer\[all]'
+alias rlsi_run='bundle exec shotgun -s thin --host 0.0.0.0'
+alias ssh_add='ssh-add ~/.ssh/id_rsa'
+
+project_setup() {
+  cd_dev
+  command="SSHUSER=$DEVUSER script/setup --database-user=rpm_db_user --database-password=trust"
+
+  if [[ $1 == "sample" ]]
+    then
+      command="${command} --sample --customer=sit"
+      eval $command
+    else
+      command="${command} -r --ssh-user=$DEVUSER"
+      eval $command
+      bundle exec rails runner $HOME/.dotfiles/dev/scripts/su.rb
+    fi
+}
 
 # Project functions
+nodes_import() {
+  rails runner $HOME/.dotfiles/dev/scripts/es_import.rb $1
+}
+
+create_prop() {
+  bundle exec rails runner $HOME/.dotfiles/dev/scripts/sample_property.rb $1 $2
+}
+
 branch() {
   name=$1
   target=$2
   git fetch --all
-  git checkout -b $name --no-track "rel/$target"
+  git checkout -b "progress/$name" --no-track "rel/$target"
+}
+
+update() {
+  git checkout $1
+  git fetch --all
+  git pull rel $1
 }
 
 rebase() {
@@ -50,9 +85,16 @@ alias glog="git lg"
 alias gllog="git lg -p"
 
 # Tool Functions
-postgres_clean() {
+pgclean() {
+  echo "Removing .pid files..."
   sudo rm /usr/local/Evar/postgres/postmaster.pid
   sudo rm /usr/local/var/postgres/postmaster.pid
+  echo "Restarting Postgres..."
+  brew services restart postgresql
+}
+
+ssl_pf() {
+  ssh -L "$1":localhost:443 $2
 }
 
 docker_run() {
@@ -80,6 +122,11 @@ docker_cleanup() {
   docker rm $(docker ps -a -q)
 }
 
+cleanup() {
+  docker_purge;
+  sudo pmset -a hibernatemode 0; sudo rm /var/vm/sleepimage;
+}
+
 # Dotfiles help
 alias_help() {
   echo "PROJECT ALIASES\n---------------"
@@ -99,3 +146,4 @@ alias_help() {
   echo "docker_run:       runs docker with project configurations at $DEVPROJECT"
   echo "docker_cleanup:   stop and removes all docker containers"
 }
+alias aliases_help='alias_help'

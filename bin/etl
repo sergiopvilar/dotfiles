@@ -5,11 +5,13 @@ require 'fileutils'
 
 customer = ARGV[0]
 file = ARGV[1]
+path = File.expand_path(ARGV[2]) unless ARGV[2].nil?
 devproject = ENV["DEVPROJECT"]
 config_file = "#{devproject}/config/rpm.yml"
 
 config = YAML.load_file(config_file)
-customer_dir = "#{config["efs_storage_dir"]}/etl/#{customer}"
+path ||= "#{config["efs_storage_dir"]}/etl"
+customer_dir = "#{path}/#{customer}"
 
 unless File.directory?(customer_dir)
   Dir.mkdir customer_dir

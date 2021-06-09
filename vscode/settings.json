@@ -11,10 +11,9 @@
 // Controls whether format on paste is on or off
 "editor.formatOnPaste": true,
 "window.zoomLevel": 0,
-"workbench.colorTheme": "AgolaDark",
+"workbench.colorTheme": "Dracula",
 "editor.fontFamily": "iosevka",
-"editor.fontSize": 18,
-"files.autoSave": "afterDelay",
+"editor.fontSize": 16,
 "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -49,5 +48,25 @@
 "material-icon-theme.saturation": 0,
 "vsicons.dontShowNewVersionMessage": true,
 "git.ignoreMissingGitWarning": true,
-"editor.fontLigatures": true
+"editor.fontLigatures": true,
+"vsicons.associations.fileDefault.file": null,
+"vscode_custom_css.policy": true,
+// The Cursive font is operator Mono, it's $200 and you need to buy it to get the cursive
+"editor.lineHeight": 30,
+"editor.letterSpacing": 0.5,
+"files.trimTrailingWhitespace": true,
+"prettier.eslintIntegration": true,
+"editor.cursorStyle": "line",
+"editor.cursorBlinking": "solid",
+"editor.renderWhitespace": "all",
+"[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+},
+"[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+},
+"C_Cpp.updateChannel": "Insiders",
+"latex-workshop.view.pdf.viewer": "tab",
+"files.autoSave": "afterDelay",
+"files.autoSaveDelay": 5000,
 }
