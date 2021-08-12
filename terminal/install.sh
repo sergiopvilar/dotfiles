@@ -9,3 +9,4 @@ fi
 if [ "$(uname)" == "Darwin" ]; then
   brew install bat lazygit
 fi
+

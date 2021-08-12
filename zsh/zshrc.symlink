@@ -12,6 +12,10 @@ then
   source ~/.localrc
 fi
 
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 # all of our zsh files
 typeset -U config_files
 config_files=($ZSHDOT/**/*.zsh)
@@ -82,3 +86,13 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
 )
+
+export PATH=$PATH:/snap/bin
+
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# fnm
+export PATH=/home/sergio/.fnm:$PATH
+eval "`fnm env`"
+
+source ~/.rvm/scripts/rvm
