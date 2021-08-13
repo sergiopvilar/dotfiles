@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 sudo apt install libpq-dev build-essential debhelper git pandoc shunit2 snapd gnome-tweak-tool git tilix \
-                 curl vpnc enpass redis-server net-tools
+                 curl vpnc enpass redis-server net-tools imwheel
 
 sudo snap install docker
 sudo snap install slack --classic
