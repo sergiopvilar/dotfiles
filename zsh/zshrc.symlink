@@ -12,10 +12,6 @@ then
   source ~/.localrc
 fi
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
-
 # all of our zsh files
 typeset -U config_files
 config_files=($ZSHDOT/**/*.zsh)

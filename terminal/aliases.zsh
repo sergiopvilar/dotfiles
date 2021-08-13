@@ -1,3 +1,3 @@
-alias cat='bat'
+# alias cat='bat'
 alias lg='lazygit'
 
