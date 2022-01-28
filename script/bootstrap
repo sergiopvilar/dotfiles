@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Enabling zsh
 if test $(which zsh)
 then
