@@ -82,3 +82,23 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code     # Exit code section
   char          # Prompt character
 )
+
+export PATH=$PATH:/snap/bin
+
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH="$PATH:$HOME/.dotfiles/bin"
+
+# fnm
+export PATH=/home/sergio/.fnm:$PATH
+eval "`fnm env`"
+
+source ~/.rvm/scripts/rvm
+
+# fnm
+export PATH=/home/sergio/.fnm:$PATH
+eval "`fnm env`"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+source /home/sergio/.config/broot/launcher/bash/br
