@@ -5,11 +5,22 @@ if [ "$(uname)" == "Darwin" ]; then
   ln -s /Users/sergio/.dotfiles/vscode/settings.json /Users/sergio/Library/Application\ Support/Code/User/settings.json
 fi
 
+<<<<<<< HEAD
 if [[ -n "$IS_WSL" || -n "$WSL_DISTRO_NAME" ]]; then
   rm $(wslpath $(wslvar APPDATA))/Code/User/settings.json
   ln -s $ZSHDOT/vscode/settings.json $(wslpath $(wslvar APPDATA))/Code/User/settings.json
 fi
 
+=======
+if [ "$(uname)" == "Linux" ]; then
+  rm /home/sergio/.config/Code/User/settings.json
+  rm /Users/sergio/Library/Application\ Support/Code/User/settings.json
+  ln -s /home/sergio/.dotfiles/vscode/settings.json /home/sergio/.config/Code/User/settings.json
+fi
+
+$HOME/.config/Code/User/settings.json
+
+>>>>>>> 80ee14ccac7b9d19ceabbf986a478848deb165bc
 code --install-extension 74th.monokai-charcoal-high-contrast
 code --install-extension 74th.Theme-NaturalContrast-With-HC
 code --install-extension CraigMaslowski.erb

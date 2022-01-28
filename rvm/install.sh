@@ -4,6 +4,10 @@ then
   curl -sSL https://get.rvm.io | bash
 fi
 
-rvm get stable
-rvm install ruby --latest
-rvm use ruby --latest
+if test ! $(which ruby)
+then
+  rvm get stable
+  rvm install ruby --latest
+  rvm use ruby --latest
+fi
+

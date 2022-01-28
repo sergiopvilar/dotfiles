@@ -10,9 +10,8 @@
 
 // Controls whether format on paste is on or off
 "editor.formatOnPaste": true,
-"window.zoomLevel": 0,
 "workbench.colorTheme": "Dracula",
-"editor.fontFamily": "iosevka",
+"editor.fontFamily": "Iosevka",
 "editor.fontSize": 16,
 "files.exclude": {
     "**/.git": true,
@@ -69,4 +68,5 @@
 "latex-workshop.view.pdf.viewer": "tab",
 "files.autoSave": "afterDelay",
 "files.autoSaveDelay": 5000,
+"security.workspace.trust.untrustedFiles": "open",
 }

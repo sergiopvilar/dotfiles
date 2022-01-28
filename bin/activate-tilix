@@ -1,0 +1,11 @@
+#!/bin/sh
+
+WINDOW_ID=$(/usr/bin/xdotool search --name "Tilix" | head -1)
+echo $WINDOW_ID
+if [ -z "$WINDOW_ID" ]
+then
+  tilix
+else
+  /usr/bin/xdotool windowactivate $WINDOW_ID
+fi
+

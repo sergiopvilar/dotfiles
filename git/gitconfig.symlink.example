@@ -1,6 +1,9 @@
 # Sample gitconfig
 #
 
+[include]
+        path = /home/sergio/.dotfiles/linux/delta-themes.gitconfig
+
 [hub]
         protocol = https
 [user]
@@ -38,3 +41,14 @@
         default = simple
 [commit]
 	template = ~/.git_commit_msg
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[delta]
+        features = calochortus-lyallii
+
+[interactive]
+    diffFilter = delta --color-only
