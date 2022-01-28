@@ -6,6 +6,12 @@ alias log="glog"
 alias gllog="git lg -p"
 alias push_amend='amend_push'
 alias uncommit='git reset HEAD^'
+alias delete_branch='remove_branch'
+alias remove_branch='git-branch-delete'
+
+rename_branch() {
+  git branch -m $1 $2
+}
 
 branch() {
   name=$1
@@ -16,10 +22,6 @@ branch() {
 
 checkout() {
   git-branch-picker
-}
-
-remove_branch() {
-  git branch -f -d $1
 }
 
 rename_push() {
@@ -45,6 +47,12 @@ update() {
   git checkout $1
   git fetch --all
   git pull rel $1
+}
+
+amend_message() {
+  email=$(git config --get user.email)
+  git add -A
+  git commit --amend --author="Sergio Vilar <$email>"
 }
 
 amend() {
@@ -106,6 +114,10 @@ rebase() {
   git rebase $1
 }
 
+reset_file() {
+  git checkout HEAD^ $1
+}
+
 branch_cleanup() {
   branches=()
   eval "$(git for-each-ref --shell --format='branches+=(%(refname:short))' refs/heads/)"
@@ -114,4 +126,27 @@ branch_cleanup() {
         git branch -D $branch
     done
   done
+}
+
+git_help(){
+  __usage="
+  Helpers do Git:
+
+    branch <branch> <target>          Cria uma branch a partir de uma branch remota
+    checkout                          Abre mudança interativa entre branches
+    remove_branch                     Apaga uma branch
+    rename_push <novo nome>           Renomeia a branch atual
+    remote_branch <target> <remote>   Cria uma branch a partir de um remote
+    update <branch>                   Atualiza uma branch a partir do remote 'rel'
+    amend                             Adiciona todas mudança e faz um git amend
+    amend_message                     Adiciona todas mudança e faz um git amend com edição
+    commit                            Adiciona todas mudança e faz um git commit
+    cherry_pick <target>              Faz um cherry-pick da branch atual no target
+    cherry_pick_continue              Continua um git cherry-pick
+    amend_push                        Faz um amend e um push pro remote origin
+    push                              Faz um push pro remote origin
+    rebase <target>                   Faz um rebase da branch target
+    branch_cleanup
+  "
+  echo "$__usage"
 }

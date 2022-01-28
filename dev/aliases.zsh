@@ -1,5 +1,5 @@
 alias tower='gittower ./'
-alias reset_vpn="ssh remote.reliant.io -p 80"
+alias reset_vpn="ssh vpn-tlh.reliant.io -p 80"
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias code='$EDITOR'
 alias rspec='bundle exec rspec'
@@ -10,6 +10,7 @@ alias php_server='php -S localhost:3000'
 alias postgres_kill="ps aux | grep postgres | grep idle | awk '{print $2}' | xargs kill"
 alias rails_run="bundle exec rails server"
 alias cde="code ./"
+alias edit_password="sudo nano /etc/vpnc/reliant"
 
 # Tool Functions
 pgclean() {
@@ -18,6 +19,10 @@ pgclean() {
   sudo rm /usr/local/var/postgres/postmaster.pid
   echo "Restarting Postgres..."
   brew services restart postgresql
+}
+
+postgres_help() {
+  psql -t -P format=unaligned -c 'show hba_file';
 }
 
 scp_download(){

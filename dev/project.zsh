@@ -1,5 +1,5 @@
 alias cd_dev="cd /home/sergio/rel/rpm"
-alias run="cd_dev; script/develop --redis-port=6380"
+alias run="cd_dev; script/develop --redis_port 6380"
 alias sa_setup="project_setup sample"
 alias su_setup="project_setup"
 alias docker_es='sudo docker-compose up elasticsearch kibana'
@@ -11,17 +11,35 @@ alias sa_setup="project_setup sample"
 alias su_setup="project_setup"
 alias cd_dev="cd /home/sergio/rel/rpm"
 
+export DOMAIN=localhost
+export RPM_REDIS_SERVER=redis://localhost:6380
+export JWT_SECRET=oi
+export DATABASE_HOST=localhost
+export DATABASE_PASSWORD=trust
+export DATABASE_NAME=rpm
+
+docker_packages() {
+  cd_dev
+  ./devtools/setup
+  git submodule update --init --recursive
+  sudo docker-compose -f devtools/rje-env/docker-compose.yml up rabbitmq sit0001red0
+}
+
 su_setup_backup() {
   cd_dev
-  command="SSHUSER=$DEVUSER script/setup --database-user=rpm_db_user --database-password=trust"
+  command="SSHUSER=$DEVUSER script/setup --database-password=trust"
   command="${command} -r --ssh-user=$DEVUSER $1"
   eval $command
   bundle exec rails runner $HOME/.dotfiles/dev/scripts/su.rb
 }
 
+rlsi_password() {
+  cat ~/cridx.db_key | grep ^$1:
+}
+
 project_setup() {
   cd_dev
-  command="SSHUSER=$DEVUSER script/setup --database-user=rpm_db_user --database-password=trust"
+  command="SSHUSER=$DEVUSER script/setup --database-password=trust"
 
   if [[ $1 == "sample" ]]
     then

@@ -8,6 +8,14 @@ docker_run() {
   PINPAD_SIMULATION_ENABLED=0 docker-compose -f $DEVPROJECT/devtools/rje-env/docker-compose.yml up rabbitmq sit0001red0
 }
 
+docker_rpm_tag() {
+  docker tag registry.reliant.io/reliant/rpm/rpm:$1 513725796245.dkr.ecr.us-east-1.amazonaws.com/rpm:latest
+}
+
+docker_rpm_push() {
+  docker push 513725796245.dkr.ecr.us-east-1.amazonaws.com/rpm:latest
+}
+
 docker_purge() {
   echo "Stopping and removing containers..."
   docker_cleanup
@@ -15,6 +23,8 @@ docker_purge() {
   docker_cleanup_images
   echo "Pruning remaining objects..."
   sudo docker system prune --all -f
+  echo "Pruning volumes..."
+  sudo docker volume prune -f
   echo "Done."
 }
 
