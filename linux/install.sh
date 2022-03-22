@@ -41,10 +41,6 @@ then
   rm bottom_0.6.3_amd64.deb
 fi
 
-echo "deb https://apt.enpass.io/ stable main" > /etc/apt/sources.list.d/enpass.list
-wget -O - https://apt.enpass.io/keys/enpass-linux.key | sudo tee /etc/apt/trusted.gpg.d/enpass.asc
-sudo apt update
-sudo apt install enpass
 exit
 
 # wget -P ~/tmp https://github.com/dracula/tilix/archive/master.zip

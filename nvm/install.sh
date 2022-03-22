@@ -7,8 +7,8 @@ then
   ./fnm-install.sh --force-install
   rm ./fnm-install.sh
   source "$HOME/.dotfiles/nvm/path.zsh"
-  fnm install latest
-  fnm default latest
+  fnm install v16.13.0
+  fnm default v16.13.0
 
   if test "$(uname)" = "Linux"
   then
@@ -35,3 +35,5 @@ if test ! $(which git-branch-delete)
 then
   npm install -g git-branch-delete
 fi
+
+exit 0
