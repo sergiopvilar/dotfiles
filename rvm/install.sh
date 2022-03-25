@@ -1,11 +1,24 @@
-gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-curl -sSL https://get.rvm.io | bash
+#!/bin/sh
+#
+# Homebrew
+#
+# This installs some of the common dependencies needed (or at least desired)
+# using Homebrew.
 
-rvm get stable
-rvm install ruby --latest
-rvm use ruby --latest
-rvm install 2.4.10
-rvm install 2.5.9
-rvm install 2.6.3
+# Check for Homebrew
+if test ! $(which rvm)
+then
+  echo "Installing RVM and Ruby..."
+
+  gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+  curl -sSL https://get.rvm.io | bash
+
+  rvm get stable
+  rvm install ruby --latest
+  rvm use ruby --latest
+  rvm install 2.4.10
+  rvm install 2.5.9
+  rvm install 2.6.3
+fi
 
 exit 0

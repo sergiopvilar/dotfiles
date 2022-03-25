@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "Installing terminal dependencies..."
+
 if [ "$(uname)" == "Linux" ]; then
   sudo apt-get update
   sudo apt-get install golang-go unzip bat -y

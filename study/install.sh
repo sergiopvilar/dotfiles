@@ -2,6 +2,8 @@
 
 if test "$(uname)" = "Linux"
 then
+  echo "Installing sudy dependencies..."
+
   sudo apt-get update
   sudo apt-get install pandoc -y
   if test ! $(which tlmgr)
