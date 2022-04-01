@@ -11,5 +11,4 @@ if [ ! -f /home/sergio/tmp/Hack-v3.003-ttf.zip ]; then
   sudo cp /home/sergio/tmp/hack/ttf/* /usr/share/fonts
 fi
 
-sudo fc-cache
-
+exit 0

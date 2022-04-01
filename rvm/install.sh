@@ -7,5 +7,6 @@ rvm use ruby --latest
 rvm install 2.4.10
 rvm install 2.5.9
 rvm install 2.6.3
+rvm install 2.1.7
 
 exit 0

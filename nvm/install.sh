@@ -31,9 +31,24 @@ then
   npm install -g gtop
 fi
 
-if test ! $(which git-branch-delete)
+if test ! $(which git-branch-picker)
 then
-  npm install -g git-branch-delete
+  npm install -g git-branch-picker
+fi
+
+if test ! $(which gbrdm)
+then
+  npm install -g gbrdm
+fi
+
+if test -z ${WSL_DISTRO_NAME}
+then
+  echo "Not installing wsl-open..."
+else
+  if test ! $(which wsl-open)
+  then
+    npm install -g wsl-open
+  fi
 fi
 
 exit 0

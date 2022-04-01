@@ -7,7 +7,8 @@ alias gllog="git lg -p"
 alias push_amend='amend_push'
 alias uncommit='git reset HEAD^'
 alias delete_branch='remove_branch'
-alias remove_branch='git-branch-delete'
+alias rm_branch='remove_branch'
+alias remove_branch='gbrdm'
 
 rename_branch() {
   git branch -m $1 $2
@@ -17,7 +18,17 @@ branch() {
   name=$1
   target=$2
   git fetch --all
-  git checkout -b "$name" --no-track "rel/$target"
+
+  git checkout -b "$name" --no-track "origin/master"
+}
+
+feature() {
+  case=$1
+  desc=$2
+  git fetch --all
+  git pull
+
+  git checkout -b "feature/${case:l}-${desc:l}" --no-track "origin/master"
 }
 
 checkout() {
