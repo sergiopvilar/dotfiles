@@ -1,6 +1,11 @@
---- 
+---
+:backtrace: false
+:bulk_threshold: 1000
+:sources:
+- https://rubygems.org/
+- https://svilar:AKCp8krAfZ7nihZzbENRpEivpbFod59qjDF5si6qC96rCFocg5conv6kKWYMBzvUmpfUYNyZv@decisiv.jfrog.io/artifactory/api/gems/ruby-gems/
 :update_sources: true
 :verbose: true
-:backtrace: false
-:benchmark: false
-gem: --no-document
+:concurrent_downloads: 8
+benchmark: false
+gem: "--no-document"

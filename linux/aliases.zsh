@@ -12,3 +12,10 @@ function desktop_mode() {
   gsettings set org.gnome.desktop.input-sources xkb-options "['lv3:ralt_switch']"
   gsettings set org.gnome.desktop.input-sources xkb-options "['lv3:ralt_switch', 'altwin:swap_lalt_lwin']"
 }
+
+if test -z ${WSL_DISTRO_NAME}
+then
+  alias open='xdg-open'
+else
+  alias open='wsl-open'
+fi

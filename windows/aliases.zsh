@@ -3,4 +3,3 @@
 #   alias open='wsl-open'
 # fi
 
-alias open='xdg-open'
