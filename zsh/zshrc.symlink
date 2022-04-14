@@ -101,8 +101,8 @@ eval "`fnm env`"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-source /home/sergio/.rvm/scripts/rvm
-
 # fnm
 export PATH=/Users/sergio/.fnm:$PATH
 eval "`fnm env`"
+
+source ~/Decisiv/.profile
