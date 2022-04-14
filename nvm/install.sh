@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Installing node version manager..."
+
 if test ! $(which fnm)
 then
   wget -O ./fnm-install.sh https://github.com/Schniz/fnm/raw/master/.ci/install.sh
