@@ -120,7 +120,7 @@ rebase() {
 
   git fetch --all
   git checkout $1
-  git pull rel $1
+  git pull origin $1
   git checkout $branch_name
   git rebase $1
 }

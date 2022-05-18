@@ -10,64 +10,6 @@ alias rcleanup="cd $DEVPROJECT;branch_cleanup && review cleanup"
 alias sa_setup="project_setup sample"
 alias su_setup="project_setup"
 alias cd_dev="cd /home/sergio/rel/rpm"
-alias dec_1="dec_foreman"
-alias dec_3="dec_portal"
-alias dec_4="dec_pricing"
-
-export DECPATH="/home/sergio/Decisiv"
-
-dec_foreman(){
-  echo "STARTING POSTGRESQL\n"
-  sudo service postgresql start
-  echo "----------------\n"
-  echo "STARTING FOREMAN\n"
-  echo "----------------\n"
-  cd $DECPATH
-  foreman start
-}
-
-panaceia() {
-  bundle exec rake db:structure:load --trace
-  bundle exec rake db:migrate
-  bundle exec rake parallel:migrate
-}
-
-dec_2(){
-  dec_services
-  dec_vpn
-}
-
-dec_portal() {
-  echo "STARTING PORTAL\n"
-  echo "---------------\n"
-  cd $DECPATH/portal
-  bundle exec rails s -p 3000
-}
-
-dec_pricing() {
-  echo "STARTING PRICING\n"
-  echo "---------------\n"
-  cd $DECPATH/pricing
-  bundle exec rails s -p 3001
-}
-
-dec_services() {
-  cd $DECPATH
-  echo "STARTING DECISIV SERVICES\n"
-  echo "-------------------------\n"
-  rvm use 2.4.10
-  services start
-  services bootstrap
-  services update_all qa
-  services list
-}
-
-dec_vpn(){
-  echo "STARTING DECISIV VPN\n"
-  echo "---------------------\n"
-  tsh --proxy=decisiv.sh:443 login --auth=okta
-  sudo openvpn ~/vpn/qa.ovpn
-}
 
 docker_packages() {
   cd_dev

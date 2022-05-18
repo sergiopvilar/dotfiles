@@ -13,13 +13,22 @@ then
   gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
   curl -sSL https://get.rvm.io | bash
 
-  rvm get stable
+  rvm get stable --auto-dotfiles
   rvm install ruby --latest
   rvm use ruby --latest
   rvm install 2.4.10
   rvm install 2.5.9
   rvm install 2.6.3
   rvm install 2.1.7
+
+  if test "$(uname)" = "Darwin"
+  then
+    brew install zlib rbenv/tap/openssl@1.0
+    export optflags="-Wno-error=implicit-function-declaration"
+    rvm install ruby-2.1.7 --with-openssl-dir=$(brew --prefix openssl@1.0) --with-zlib-dir=$(brew --prefix zlib) --autolibs=disable
+  else
+    rvm install 2.1.7
+  fi
 fi
 
 exit 0
