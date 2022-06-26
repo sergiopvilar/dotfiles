@@ -1,5 +1,4 @@
 alias cd_dev="cd /home/sergio/rel/rpm"
-alias run="cd_dev; script/develop --redis_port 6380"
 alias sa_setup="project_setup sample"
 alias su_setup="project_setup"
 alias docker_es='sudo docker-compose up elasticsearch kibana'
@@ -10,6 +9,20 @@ alias rcleanup="cd $DEVPROJECT;branch_cleanup && review cleanup"
 alias sa_setup="project_setup sample"
 alias su_setup="project_setup"
 alias cd_dev="cd /home/sergio/rel/rpm"
+
+alias nitro_indexes="bin/rails nitro_search:elastic:create_indices"
+
+run() {
+  cd ~/pwr/nitro-web
+  make start
+  WEB_CONCURRENCY=1 RAILS_MAX_THREADS=1 WEB_WORKER_TIMEOUT=4600 bin/rails s
+}
+
+yarn_component() {
+  dir=${PWD##*/}
+  cd ../../
+  PACKS=$dir yarn hmr
+}
 
 docker_packages() {
   cd_dev
