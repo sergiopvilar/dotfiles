@@ -1,5 +1,4 @@
 alias cd_dev="cd /home/sergio/rel/rpm"
-alias run="cd_dev; script/develop --redis_port 6380"
 alias sa_setup="project_setup sample"
 alias su_setup="project_setup"
 alias docker_es='sudo docker-compose up elasticsearch kibana'
@@ -101,6 +100,12 @@ project_setup() {
       eval $command
       bundle exec rails runner $HOME/.dotfiles/dev/scripts/su.rb
     fi
+}
+
+run() {
+  cd ~/pwr/nitro-web
+  make start
+  bin/rails s
 }
 
 # Project functions

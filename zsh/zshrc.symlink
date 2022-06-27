@@ -85,31 +85,25 @@ SPACESHIP_PROMPT_ORDER=(
 
 export PATH=$PATH:/snap/bin
 
-export PATH="$PATH:$HOME/.rvm/bin"
-
 export PATH="$PATH:$HOME/.dotfiles/bin"
-
-# fnm
-export PATH=/home/sergio/.fnm:$PATH
-eval "`fnm env`"
-
-source ~/.rvm/scripts/rvm
-
-# fnm
-export PATH=/home/sergio/.fnm:$PATH
-eval "`fnm env`"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-source /home/sergio/.rvm/scripts/rvm
-
-source ~/Decisiv/.profile
-
-# fnm
-export PATH=/home/sergio/.fnm:$PATH
-eval "`fnm env`"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$PATH:$HOME/bin"
 fi
+export ARCHFLAGS="-arch arm64"
+export PATH="/opt/homebrew/opt/openssl@1.1/bin:$PATH"
+export LIBRARY_PATH="/opt/homebrew/opt/openssl@1.1/lib:$LIBRARY_PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@11/bin:$PATH"
+
+. /opt/homebrew/opt/asdf/asdf.sh
+
+. /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
+
+. /opt/homebrew/opt/asdf/asdf.sh
+
+. /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash

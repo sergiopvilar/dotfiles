@@ -23,12 +23,14 @@ branch() {
 }
 
 feature() {
-  case=$1
-  desc=$2
+  default_team="nova"
+  team="${2:-$default_team}"
+  ticket=$1
   git fetch --all
+  git checkout master
   git pull
 
-  git checkout -b "feature/${case:l}-${desc:l}" --no-track "origin/master"
+  git checkout -b "${team:l}/${ticket:l}" --no-track "origin/master"
 }
 
 checkout() {

@@ -16,6 +16,7 @@ brew 'yarn'
 brew 'bat'
 brew 'gnupg'
 brew 'python'
+brew 'git-delta'
 
 # Fonts
 cask 'homebrew/cask-fonts/font-hack'
