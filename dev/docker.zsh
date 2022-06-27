@@ -1,6 +1,5 @@
 alias docker_cleanup_rel="docker images | grep reliant.io | awk '{print $3}' | xargs docker rmi"
 alias docker_cleanup_none="docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi"
-alias docker_cleanup_images="sudo docker images | awk '{print $3}' | xargs sudo docker rmi"
 
 docker_run() {
   cd_dev
@@ -15,6 +14,8 @@ docker_rpm_tag() {
 docker_rpm_push() {
   docker push 513725796245.dkr.ecr.us-east-1.amazonaws.com/rpm:latest
 }
+
+alias docker_cleanup_images="sudo docker images | awk '{print $3}' | xargs sudo docker rmi"
 
 docker_purge() {
   echo "Stopping and removing containers..."

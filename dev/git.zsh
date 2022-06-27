@@ -23,14 +23,11 @@ branch() {
 }
 
 feature() {
-  default_team="nova"
-  team="${2:-$default_team}"
-  ticket=$1
-  git fetch --all
-  git checkout master
-  git pull
+  update master
+  team="${2:-nova}"
+  feature=$1
 
-  git checkout -b "${team:l}/${ticket:l}" --no-track "origin/master"
+  git checkout -b "${team:l}/${feature:l}" --no-track "origin/master"
 }
 
 checkout() {
@@ -59,7 +56,7 @@ remote_branch() {
 update() {
   git checkout $1
   git fetch --all
-  git pull rel $1
+  git pull origin $1
 }
 
 amend_message() {
@@ -122,9 +119,39 @@ rebase() {
 
   git fetch --all
   git checkout $1
-  git pull rel $1
+  git pull origin $1
   git checkout $branch_name
   git rebase $1
+}
+
+merge_commit() {
+  if read -q "choice?Deseja commitar o merge? [Y/N]:"; then
+      git commit
+  else
+      echo
+      echo "Blz..."
+      echo
+  fi
+}
+
+merge() {
+  branch_name="$(git symbolic-ref HEAD 2>/dev/null)" ||
+  branch_name="(unnamed branch)"
+  branch_name=${branch_name##refs/heads/}
+
+  git fetch --all
+  git checkout $1
+  git pull origin $1
+  git checkout $branch_name
+  git merge $1
+
+  if read -q "choice?Deseja rodar o bundle na home do projeto? [Y/N]:"; then
+      cd ~/pwr/nitro-web
+      bundle
+      merge_commit
+  else
+      merge_commit
+  fi
 }
 
 reset_file() {
