@@ -3,7 +3,6 @@ alias reset_vpn="ssh vpn-tlh.reliant.io -p 80"
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias code='$EDITOR'
 alias rspec='bundle exec rspec'
-alias rails='bundle exec rails'
 alias rake='bundle exec rake'
 alias ssh_add='ssh-add ~/.ssh/id_rsa'
 alias php_server='php -S localhost:3000'

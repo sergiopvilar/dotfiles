@@ -1,0 +1,16 @@
+#!/usr/bin/ruby
+
+require "readline"
+
+def confirm?(branch_names)
+ puts "Branches marked for deletion:", branch_names
+
+ (Readline.readline("Confirm? ", true) =~ /^y/i) == 0
+end
+
+branches_to_delete = `git branch -vv | awk '/: gone]/{print $1}'`.split
+if branches_to_delete.empty?
+  puts "No branches deleted remotely to delete locally"
+else
+  confirm?(branches_to_delete) && branches_to_delete.each {|b| `git branch -D "#{b}"`}
+end

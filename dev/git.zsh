@@ -24,14 +24,22 @@ branch() {
 
 feature() {
   update master
-  team="${2:-nova}"
+  team="${3:-nova}"
   feature=$1
 
-  git checkout -b "${team:l}/${feature:l}" --no-track "origin/master"
+  if test -z "$2"
+  then
+        desc=""
+  else
+        desc="-${2}"
+  fi
+
+  git checkout -b "${team:l}/${feature:l}${desc}" --no-track "origin/master"
 }
 
 checkout() {
   git-branch-picker
+  git log -n 5 --oneline
 }
 
 rename_push() {
@@ -71,6 +79,10 @@ amend() {
   git commit --amend --no-edit --author="Sergio Vilar <$email>"
 }
 
+cm() {
+  git commit -m $1
+}
+
 commit() {
   git diff
   if read -q "choice?Deseja fazer o commit? [Y/N]:"; then
@@ -107,9 +119,35 @@ amend_push() {
   fi
 }
 
+pull() {
+  git prune
+  git remote prune origin
+  git pull
+}
+
 push() {
   current_branch=$(git rev-parse --abbrev-ref HEAD)
   git push -u origin $current_branch
+}
+
+merge_master() {
+  branch="${1:-master}"
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+  echo "Checking out master..."
+  git checkout $branch
+  echo "Pulling master..."
+  pull
+  echo "Checking out $current_branch..."
+  git checkout $current_branch
+  echo "Merging..."
+  git merge $branch
+  git commit -m "Merge branch 'master' into $current_branch"
+  bundle
+}
+
+push_merge() {
+  merge_master
+  push
 }
 
 rebase() {
@@ -156,6 +194,10 @@ merge() {
 
 reset_file() {
   git checkout HEAD^ $1
+}
+
+conflict_file() {
+  git checkout HEAD -- $1
 }
 
 branch_cleanup() {
