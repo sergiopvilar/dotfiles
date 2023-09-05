@@ -2,39 +2,41 @@
 
 require "readline"
 
+user = "sergiopvilar"
+master = "master"
+team = "NOVA"
+pr_tag = "Nova Corp"
+
 story = `git rev-parse --abbrev-ref HEAD`.split('-').first.gsub('/', '-').upcase
-is_nova_story = story.include?('NOVA')
-template_path = `realpath ~/.dotfiles/dev/pr_body.txt`
+is_team_story = story.include?(team)
 story_link = "https://nitro.powerhrg.com/runway/backlog_items/#{story}"
 
 pr_body = <<-EOS
 #### What does this PR do?
 
-#{is_nova_story ? story_link : ""}
+#{is_team_story ? story_link : ""}
 
 #### Any background context you want to provide?
 
 #### Definition of Done:
 
-- [ ] <strong>PR:</strong> ⚠️ My Runway story number is in the title. Ex. `[ABC-123] The title of my PR` [more info](https://stackoverflow.com/c/powerhome/questions/393)
+- [ ] <strong>PR:</strong> ⚠️ My Runway story number is in the title. Ex. \'[ABC-123] The title of my PR\' [more info](https://stackoverflow.com/c/powerhome/questions/393)
 - [ ] <strong>PR:</strong> Screenshots are included for all UI changes to streamline review.
 - [ ] <strong>PR:</strong> A related <em>support ticket</em> is referenced in the PR.
 - [ ] <strong>DB:</strong> ⚠️ A migration is included and I have reviewed the [Migration Checklist](https://github.com/powerhome/nitro-web/blob/master/docs/database/database-standards.md#migration-checklist).
 - [ ] <strong>App:</strong> My producteer confirms this story has appropriate <em>permissions</em> and <em>menu items</em>.
-- [ ] <strong>App:</strong> I have verified that methods <em>only accessed within a Module/Class</em> are marked `private`.
+- [ ] <strong>App:</strong> I have verified that methods <em>only accessed within a Module/Class</em> are marked \'private\'.
 - [ ] <strong>App:</strong> I've included appropriate <em>user-facing documentation</em> for page/API changes. Ex: tooltips, DevDocs, StackOverflow, etc.
 - [ ] <strong>App:</strong> This PR requires new infrastructure or OS/library dependencies which are updated in the Kubernetes templates and fall within our Namespace Quota.
 - [ ] <strong>App:</strong> This PR has updated _secrets_ and relevant changes in _production_ are coordinated with Guardians.
 - [ ] <strong>CI:</strong> I have added appropriate <em>test coverage</em> and <em>logging</em>.
-- [ ] <strong>CI:</strong> I resolved appropriate `rubocop` and `eslint` offenses and refreshed the relevant component's `rubocop_todo.yml` file.
+- [ ] <strong>CI:</strong> I resolved appropriate \'rubocop\' and \'eslint\' offenses and refreshed the relevant component's \'rubocop_todo.yml\' file.
 - [ ] <strong>RFC:</strong> This is a <em>substantial change</em> and have considered a [proposal](https://github.com/powerhome/rfcs#when-to-follow-this-process) first.
 
 EOS
 
 user_title = Readline.readline("Qual o título do PR? ", false)
-pre_title = is_nova_story ? "[#{story}]" : "[NOVA]"
-user = "sergiopvilar"
-master = "master"
+pre_title = is_team_story ? "[#{story}]" : "[#{team}]"
 title = "#{pre_title} #{user_title}"
 
-pr = `gh pr create -a #{user} -B #{master} -b "#{pr_body}" -l "Nova Corp" -t "#{title}" -w`
+pr = `gh pr create -a #{user} -B #{master} -b "#{pr_body}" -l "#{pr_tag}" -t "#{title}" -w`
