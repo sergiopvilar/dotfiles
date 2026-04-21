@@ -24,7 +24,7 @@ branch() {
 
 feature() {
   update master
-  team="${3:-nova}"
+  team="${3:-terrifics}"
   feature=$1
 
   if test -z "$2"
@@ -70,17 +70,17 @@ update() {
 amend_message() {
   email=$(git config --get user.email)
   git add -A
-  git commit --amend --author="Sergio Vilar <$email>"
+  git commit -S --amend --author="Sergio Vilar <$email>"
 }
 
 amend() {
   email=$(git config --get user.email)
   git add -A
-  git commit --amend --no-edit --author="Sergio Vilar <$email>"
+  git commit -S --amend --no-edit --author="Sergio Vilar <$email>"
 }
 
 cm() {
-  git commit -m $1
+  git commit -S -m $1
 }
 
 commit() {
@@ -141,7 +141,7 @@ merge_master() {
   git checkout $current_branch
   echo "Merging..."
   git merge $branch
-  git commit -m "Merge branch 'master' into $current_branch"
+  git commit -S -m "Merge branch 'master' into $current_branch"
   bundle
 }
 

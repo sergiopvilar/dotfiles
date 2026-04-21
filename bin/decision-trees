@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+pp = Person.new(date_of_birth: '1980-01-01')
+Person.update_all(encrypted_date_of_birth: pp.encrypted_date_of_birth)
+
+["siding", "doors", "windows", "roofing", "attic_insulation"].each do |prod|
+  HomeTour::DecisionTreeFile.generate_for(product: Product.send(prod))
+end

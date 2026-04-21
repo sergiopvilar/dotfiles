@@ -100,10 +100,16 @@ export LIBRARY_PATH="/opt/homebrew/opt/openssl@1.1/lib:$LIBRARY_PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@11/bin:$PATH"
 
-. /opt/homebrew/opt/asdf/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+autoload -Uz compinit && compinit
 
-. /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
-. /opt/homebrew/opt/asdf/asdf.sh
 
-. /opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash
+
+export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
+
+source /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh

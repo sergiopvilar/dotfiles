@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+pp = Person.new(date_of_birth: '1980-01-01')
+Person.update_all(encrypted_date_of_birth: pp.encrypted_date_of_birth)
+
+# [siding, roofing, windows, attic_insulation]

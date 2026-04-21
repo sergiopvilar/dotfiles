@@ -13,6 +13,16 @@ echo "1. Faz remote shell pra QA normalmente:
     RAILS_ENV=training_qa bin/rails c\n"
 }
 
+prepare_appointment() {
+  cd ~/pwr/nitro-web
+  bin/rails "home_tour:prepare_appointment[,New,,,,delivery,]"
+}
+
+decision_trees() {
+  cd ~/pwr/nitro-web
+  bin/rails home_tour:decision_tree:generate
+}
+
 shell_qa() {
   make remoteShell env=qa cluster=app-beta-hq
 }
@@ -27,6 +37,10 @@ rubocop_fix() {
   git status --porcelain | sed s/^...// | grep .rb | xargs -L1 bin/rubocop -A
 }
 
+decision_trees() {
+  bin/rails runner "HomeTour::DecisionTreeFile.generate"
+}
+
 yarn_fix() {
   cd ~/pwr/nitro-web
   git status --porcelain | sed s/^...// | grep .js | xargs -L1 yarn lint --fix
@@ -34,7 +48,6 @@ yarn_fix() {
 }
 
 spec() {
-  clear
   file=$1
   component=${PWD##*/}
   toRemove="components/$component/"
@@ -54,6 +67,13 @@ rollback() {
   cd components/$1
   bin/rails db:rollback
   bin/schema
+}
+
+clean_assets() {
+  cd ~/pwr/nitro-web
+  rm -rf public/assets
+  rm -rf public/packs
+  rails assets:precompile
 }
 
 nitro_refresh() {
@@ -89,7 +109,12 @@ run() {
   cd ~/pwr/nitro-web
   make stop
   make start
-  WEB_CONCURRENCY=1 RAILS_MAX_THREADS=1 WEB_WORKER_TIMEOUT=6000000 bin/rails s
+  WEB_CONCURRENCY=1 RAILS_MAX_THREADS=1 WEB_WORKER_TIMEOUT=6000000 bin/rails s --binding=127.0.0.1
+}
+
+run_training() {
+    cd ~/pwr/nitro-web
+    bin/rails server -e training_development -p 3001 --pid `pwd`/tmp/pids/server-training.pid
 }
 
 yarn_component() {
@@ -108,6 +133,29 @@ run() {
   open -a Docker
   make start
   bin/rails s
+}
+
+fix_people() {
+  bundle exec rails r ~/.dotfiles/bin/fix-people
+}
+
+decision_trees () {
+  bundle exec rails r ~/.dotfiles/bin/decision-trees
+}
+
+local_ip() {
+  ipconfig getifaddr en0
+}
+
+run_local() {
+  echo "Your local IP is $(ipconfig getifaddr en0)"
+  bin/rails s --binding=0.0.0.0
+}
+
+solar_comparison_debug() {
+  estimate_id=$1
+  cd ~/pwr/nitro-web
+  bin/rails runner ~/.dotfiles/dev/scripts/solar_comparison_debug.rb $estimate_id
 }
 
 ncommit() {
@@ -142,4 +190,3 @@ rspec_component                   Does the configuration and runs bin/rspec for 
 yarn_component                    Runs yarn hmr for the current component
 run                               Create the containers and runs rails"
 }
-
